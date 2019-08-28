@@ -13,3 +13,9 @@ library
   import: language
   exposed-modules: Hedgehog.ForAll
   hs-source-dirs: lib
+
+test-suite test
+  import: language
+  hs-source-dirs: test
+  main-is: Main.hs
+  type: exitcode-stdio-1.0
