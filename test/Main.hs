@@ -1,9 +1,12 @@
 {-# LANGUAGE ConstraintKinds #-}
 {-# LANGUAGE ExistentialQuantification #-}
 {-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
 {-# LANGUAGE Rank2Types #-}
 {-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE TypeOperators #-}
 {-# LANGUAGE UndecidableInstances #-}
+{-# LANGUAGE UndecidableSuperClasses #-}
 
 import Control.Monad (join)
 import Hedgehog (Gen)
@@ -16,15 +19,16 @@ main = do
   True <-
     join
       $ hchoice
-          [ HGen @SemigroupLaws $ Gen.string (Range.linear 0 100) Gen.unicode,
+          [ HGen @(Eq /\ Show /\ Semigroup)
+              $ Gen.string (Range.linear 0 100) Gen.unicode,
             HGen $ Gen.text (Range.linear 0 100) Gen.unicode
             ]
           (lawsCheck . semigroupLaws)
   pure ()
 
-class (Eq a, Semigroup a, Show a) => SemigroupLaws a
+class (c1 a, c2 a) => (c1 /\ c2) a
 
-instance (Eq a, Semigroup a, Show a) => SemigroupLaws a
+instance (c1 a, c2 a) => (c1 /\ c2) a
 
 -- lib
 data HGen c = forall a. c a => HGen (Gen a)
