@@ -1,0 +1,1 @@
+module Hedgehog.ForAll () where
