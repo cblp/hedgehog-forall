@@ -19,16 +19,16 @@ main = do
   True <-
     join
       $ hchoice
-          [ HGen @(Eq /\ Show /\ Semigroup)
+          [ HGen @(Eq ꘍ Show ꘍ Semigroup)
               $ Gen.string (Range.linear 0 100) Gen.unicode,
             HGen $ Gen.text (Range.linear 0 100) Gen.unicode
             ]
           (lawsCheck . semigroupLaws)
   pure ()
 
-class (c1 a, c2 a) => (c1 /\ c2) a
+class (c1 a, c2 a) => (c1 ꘍ c2) a
 
-instance (c1 a, c2 a) => (c1 /\ c2) a
+instance (c1 a, c2 a) => (c1 ꘍ c2) a
 
 -- lib
 data HGen c = forall a. c a => HGen (Gen a)
