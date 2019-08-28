@@ -1,1 +1,4 @@
 resolver: lts-14.0
+
+extra-deps:
+  - hedgehog-classes-0.2.2

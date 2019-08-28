@@ -16,6 +16,9 @@ library
 
 test-suite test
   import: language
+  build-depends:
+    hedgehog,
+    hedgehog-classes,
   hs-source-dirs: test
   main-is: Main.hs
   type: exitcode-stdio-1.0

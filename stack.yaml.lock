@@ -3,7 +3,14 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: hedgehog-classes-0.2.2@sha256:93847ac228f93ee70eba633386e5c2628f4f5d95d55d5b2574115c348d177f0e,5439
+    pantry-tree:
+      size: 4798
+      sha256: 457e12d30c1dfc3a9d6866e205de35b653839fb42da644a294928044a91c169a
+  original:
+    hackage: hedgehog-classes-0.2.2
 snapshots:
 - completed:
     size: 523443
